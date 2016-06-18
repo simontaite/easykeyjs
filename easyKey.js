@@ -57,6 +57,7 @@
 		"x":88,
 		"y":89,
 		"z":90,
+		"meta": 91,
 		"left_window_key":91,
 		"right_window_key":92,
 		"select_key":93,
@@ -107,7 +108,8 @@
 		onKeyUp: 2,
 		withShiftPressed: 4,
 		withControlPressed: 8,
-		withAltPressed: 16
+		withAltPressed: 16,
+		withMetaPressed: 32
 	};
 	
 
@@ -130,7 +132,10 @@
 				return false;
 
 			if ((hasOption($.easyKey.options.withAltPressed) && !event.altKey) || (!hasOption($.easyKey.options.withAltPressed) && event.altKey))
-				return false;			
+				return false;
+
+			if ((hasOption($.easyKey.options.withMetaPressed) && !event.metaKey) || (!hasOption($.easyKey.options.withMetaPressed) && event.metaKey))
+				return false;
 
 			return true;
 		};
@@ -163,6 +168,7 @@
 	$.fn.onShiftKeyDown = function(onKeyDownHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.shift, onKeyDownHandler, $.easyKey.options.onKeyDown | options); }
 	$.fn.onCtrlKeyDown = function(onKeyDownHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.ctrl, onKeyDownHandler, $.easyKey.options.onKeyDown | options); }
 	$.fn.onAltKeyDown = function(onKeyDownHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.alt, onKeyDownHandler, $.easyKey.options.onKeyDown | options); }
+	$.fn.onMetaKeyDown = function(onKeyDownHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.meta, onKeyDownHandler, $.easyKey.options.onKeyDown | options); }
 	$.fn.onPauseBreakKeyDown = function(onKeyDownHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.pause_break, onKeyDownHandler, $.easyKey.options.onKeyDown | options); }
 	$.fn.onCapsLockKeyDown = function(onKeyDownHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.caps_lock, onKeyDownHandler, $.easyKey.options.onKeyDown | options); }
 	$.fn.onEscapeKeyDown = function(onKeyDownHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.escape, onKeyDownHandler, $.easyKey.options.onKeyDown | options); }
@@ -263,6 +269,7 @@
 	$.fn.onShiftKeyUp = function(onKeyUpHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.shift, onKeyUpHandler, $.easyKey.options.onKeyUp | options); }
 	$.fn.onCtrlKeyUp = function(onKeyUpHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.ctrl, onKeyUpHandler, $.easyKey.options.onKeyUp | options); }
 	$.fn.onAltKeyUp = function(onKeyUpHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.alt, onKeyUpHandler, $.easyKey.options.onKeyUp | options); }
+	$.fn.onMetaKeyUp = function(onKeyUpHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.meta, onKeyUpHandler, $.easyKey.options.onKeyUp | options); }
 	$.fn.onPauseBreakKeyUp = function(onKeyUpHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.pause_break, onKeyUpHandler, $.easyKey.options.onKeyUp | options); }
 	$.fn.onCapsLockKeyUp = function(onKeyUpHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.caps_lock, onKeyUpHandler, $.easyKey.options.onKeyUp | options); }
 	$.fn.onEscapeKeyUp = function(onKeyUpHandler, options) { return $.fn.onKey.call(this, $.easyKey.keyCodes.escape, onKeyUpHandler, $.easyKey.options.onKeyUp | options); }

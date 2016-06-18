@@ -56,6 +56,7 @@ easyKey.keyCodes = easyKey.keyCodes || {
 	"x":88,
 	"y":89,
 	"z":90,
+	"meta":91,
 	"left_window_key":91,
 	"right_window_key":92,
 	"select_key":93,
@@ -106,7 +107,8 @@ easyKey.options = {
 	onKeyUp: 2,
 	withShiftPressed: 4,
 	withControlPressed: 8,
-	withAltPressed: 16
+	withAltPressed: 16,
+	withMetaPressed: 32
 };
 
 
@@ -131,6 +133,9 @@ easyKey.onKey = function(whichKey, collection, onKey, options){
 
 		if ((hasOption(easyKey.options.withAltPressed) && !event.altKey) || (!hasOption(easyKey.options.withAltPressed) && event.altKey))
 			return false;			
+
+		if ((hasOption($.easyKey.options.withMetaPressed) && !event.metaKey) || (!hasOption($.easyKey.options.withMetaPressed) && event.metaKey))
+			return false;
 
 		return true;
 	};
@@ -164,6 +169,7 @@ easyKey.onEnterKeyDown = function(collection, onKeyDownHandler, options) { retur
 easyKey.onShiftKeyDown = function(collection, onKeyDownHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.shift, collection, onKeyDownHandler, easyKey.options.onKeyDown | options); }
 easyKey.onCtrlKeyDown = function(collection, onKeyDownHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.ctrl, collection, onKeyDownHandler, easyKey.options.onKeyDown | options); }
 easyKey.onAltKeyDown = function(collection, onKeyDownHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.alt, collection, onKeyDownHandler, easyKey.options.onKeyDown | options); }
+easyKey.onMetaKeyDown = function(collection, onKeyDownHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.meta, collection, onKeyDownHandler, easyKey.options.onKeyDown | options); }
 easyKey.onPauseBreakKeyDown = function(collection, onKeyDownHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.pause_break, collection, onKeyDownHandler, easyKey.options.onKeyDown | options); }
 easyKey.onCapsLockKeyDown = function(collection, onKeyDownHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.caps_lock, collection, onKeyDownHandler, easyKey.options.onKeyDown | options); }
 easyKey.onEscapeKeyDown = function(collection, onKeyDownHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.escape, collection, onKeyDownHandler, easyKey.options.onKeyDown | options); }
@@ -264,6 +270,7 @@ easyKey.onEnterKeyUp = function(collection, onKeyUpHandler, options) { return ea
 easyKey.onShiftKeyUp = function(collection, onKeyUpHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.shift, collection, onKeyUpHandler, easyKey.options.onKeyUp | options); }
 easyKey.onCtrlKeyUp = function(collection, onKeyUpHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.ctrl, collection, onKeyUpHandler, easyKey.options.onKeyUp | options); }
 easyKey.onAltKeyUp = function(collection, onKeyUpHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.alt, collection, onKeyUpHandler, easyKey.options.onKeyUp | options); }
+easyKey.onMetaKeyUp = function(collection, onKeyUpHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.meta, collection, onKeyUpHandler, easyKey.options.onKeyUp | options); }
 easyKey.onPauseBreakKeyUp = function(collection, onKeyUpHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.pause_break, collection, onKeyUpHandler, easyKey.options.onKeyUp | options); }
 easyKey.onCapsLockKeyUp = function(collection, onKeyUpHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.caps_lock, collection, onKeyUpHandler, easyKey.options.onKeyUp | options); }
 easyKey.onEscapeKeyUp = function(collection, onKeyUpHandler, options) { return easyKey.onKey.call(this, easyKey.keyCodes.escape, collection, onKeyUpHandler, easyKey.options.onKeyUp | options); }
